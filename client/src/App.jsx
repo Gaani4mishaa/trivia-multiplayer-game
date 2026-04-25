@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import confetti from 'canvas-confetti';
 
-const socket = io('http://localhost:3001');
+const socket = io('https://trivia-multiplayer-game.onrender.com');
 
 function App() {
   // Auth state
@@ -56,7 +56,7 @@ function App() {
   // Fetch global leaderboard
   const fetchGlobalLeaderboard = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/leaderboard');
+      const res = await fetch('https://trivia-multiplayer-game.onrender.com/api/leaderboard');
       const data = await res.json();
       setGlobalLeaderboard(data);
     } catch (err) {
@@ -168,7 +168,7 @@ function App() {
   // Register function
   const handleRegister = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/register', {
+      const res = await fetch('https://trivia-multiplayer-game.onrender.com/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: regUsername, email: regEmail, password: regPassword })
@@ -191,7 +191,7 @@ function App() {
   // Login function
   const handleLogin = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/login', {
+      const res = await fetch('https://trivia-multiplayer-game.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: loginEmail, password: loginPassword })
